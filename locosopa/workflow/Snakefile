@@ -2,7 +2,6 @@ rule all:
     input:
         "build/index.html",
         "build/style.css",
-        "build/resources/report.html",
 
 
 rule build_css:
@@ -27,13 +26,3 @@ rule build_html:
         "envs/ytml.yaml"
     shell:
         "ytml src build {input.config} index.ytml.yaml"
-
-
-rule copy_asset:
-    input:
-        "src/{asset}",
-    output:
-        "build/{asset}",
-    shell:
-        "mkdir -p $(dirname {output}); "
-        "cp {input} {output}"
