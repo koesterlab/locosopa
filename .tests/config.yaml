@@ -113,5 +113,5 @@ features:
     desc: |
       Automatic, interactive, self-contained [reports](https://snakemake.readthedocs.io/en/stable/snakefiles/reporting.html) ensure full transparency from results down to used steps, parameters, code, and software.
       The reports can moreover contain embedded results (from images, to PDFs and even [interactive HTML](https://github.com/datavzrd/datavzrd)) enabling a comprehensive reporting that combines analysis results with data provenance information.
-    img: .tests/report.png
+    img: report.png
     url: https://snakemake.github.io/resources/report.html
