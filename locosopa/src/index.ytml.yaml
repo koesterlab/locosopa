@@ -14,9 +14,7 @@ __definitions__:
       return string
   - |
     def relpath(path):
-      return str(config_dir / path)
-
-
+      return str((config_dir / path).absolute())
 
 html:
   class: dark

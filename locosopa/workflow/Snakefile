@@ -1,13 +1,23 @@
+from pathlib import Path
+
+asset_base = Path(config['asset_base'])
+
+assets = config["assets"].split(",")
+
+
 rule all:
     input:
         "build/index.html",
         "build/style.css",
+        [
+            f"build/{asset}"
+            for asset in assets
+        ]
 
 
 rule build_css:
     input:
         "build/index.html",
-        "build/hero.png",
         css="src/style.css",
     output:
         "build/style.css",
@@ -26,3 +36,13 @@ rule build_html:
         "envs/ytml.yaml"
     shell:
         "ytml src build {input.config} index.ytml.yaml"
+
+
+rule copy_asset:
+    input:
+        f"{asset_base}/{{asset}}",
+    output:
+        "build/{asset}",
+    shell:
+        "mkdir -p $(dirname {output}); "
+        "cp {input} {output}"

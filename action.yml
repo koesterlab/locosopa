@@ -5,6 +5,9 @@ inputs:
   config:
     description: Path to config file
     required: true
+  assets:
+    description: Paths to additional assets, separated by comma
+    default: ""
   path:
     description: Path to deploy to
     default: locosopa_action
@@ -35,7 +38,7 @@ runs:
     - name: Build page
       shell: bash -el {0}
       run: |
-        cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }}
+        cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }} assets=${{ input.assets }} asset_base=${{ github.workspace }}
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
@@ -43,11 +46,11 @@ runs:
         path: ${{ inputs.path }}/locosopa/build
 
     - name: Setup Pages
-      if: ${{ inputs.deploy == true }}
+      if: ${{ inputs.deploy == 'true' }}
       uses: actions/configure-pages@v3
 
     - name: Deploy to GitHub Pages
-      if: ${{ inputs.deploy == true }}
+      if: ${{ inputs.deploy == 'true' }}
       id: deployment
       uses: actions/deploy-pages@v2
 
