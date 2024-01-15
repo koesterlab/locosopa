@@ -1,2 +1,2 @@
-# snakemake.github.io
-Snakemake homepage
+# Locosopa
+A github action for low-code software homepages.
