@@ -38,7 +38,7 @@ runs:
     - name: Build page
       shell: bash -el {0}
       run: |
-        cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }} assets=${{ input.assets }} asset_base=${{ github.workspace }}
+        cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }} assets=${{ inputs.assets }} asset_base=${{ github.workspace }}
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
