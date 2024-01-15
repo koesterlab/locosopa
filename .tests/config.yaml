@@ -1,8 +1,10 @@
+__use_yte__: true
+
 __definitions__:
   - from os.path import abspath
 
 header:
-  logo: ?abspath("".tests/logo-snake.svg")
+  logo: ?abspath(".tests/logo-snake.svg")
   name: Snakemake
   links:
     - text: Docs
