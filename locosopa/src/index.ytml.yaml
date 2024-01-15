@@ -12,6 +12,9 @@ __definitions__:
       string = re.sub(r"!([a-zA-Z0-9_-]+)!", emerald(r"\1", 500), string)
       string = re.sub(r"%([a-zA-Z0-9_-]+)%", emerald(r"\1", 200), string)
       return string
+  - |
+    def relpath(path):
+      return str(config_dir / path)
 
 
 
@@ -50,13 +53,13 @@ html:
                               content:
                                 - li:
                                     file:
-                                      path: ?header["logo"]
+                                      path: ?relpath(config["header"]["logo"])
                                       class: "w-8 h-8"
                                       inline: true
                                 - li:
                                     span:
                                       class: font-bold
-                                      content: ?header["name"]
+                                      content: ?config["header"]["name"]
                   - div:
                       class: flex items-center
                       content:
@@ -64,7 +67,7 @@ html:
                           ul:
                             class: flex items-center gap-x-8
                             content:
-                              ?for item in header["links"]:
+                              ?for item in config["header"]["links"]:
                                 - li:
                                     a:
                                       href: ?item["url"]
@@ -75,14 +78,14 @@ html:
                 class: py-12 mx-auto w-fit max-w-3xl
                 content:
                   - file:
-                      path: ?hero["logo"]
+                      path: ?relpath(config["hero"]["logo"])
                       inline: true
                       class: "mt-6 mx-auto mb-5"
                       style: "width: 500px"
                   - ul:
                       class: mt-6 text-lg max-w-3xl text-slate-900 dark:text-white
                       content:
-                        ?for item in hero["statements"]:
+                        ?for item in config["hero"]["statements"]:
                           - li:
                               class: prose prose-a:text-white hover:prose-a:text-emerald-500 text-white prose-a:no-underline
                               content:
@@ -90,7 +93,7 @@ html:
                   - div:
                       class: mt-6 max-w-3xl sm:mt-10 flex space-x-6 text-sm
                       content:
-                        ?for item in hero["links"]:
+                        ?for item in config["hero"]["links"]:
                           - a:
                               href: ?item["url"]
                               class: "bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded"
@@ -104,7 +107,7 @@ html:
             div:
               class: px-8 max-w-screen-lg mx-auto mt-20 sm:mt-32 md:mt-40 flex flex-col gap-20
               content:
-                ?for i, item in enumerate(features):
+                ?for i, item in enumerate(config["features"]):
                   - div:
                       class: md:flex md:flex-row md:space-x-4 md:justify-center md:items-center gap-10
                       content:
@@ -135,7 +138,7 @@ html:
                                   img:
                                     src:
                                       file: 
-                                        path: ?item["img"]
+                                        path: ?relpath(item["img"])
                                     class: "rounded-lg"
                                     style: "width: 200px; max-width: 100vw;"
                                     content: null

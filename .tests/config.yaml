@@ -1,10 +1,5 @@
-__use_yte__: true
-
-__definitions__:
-  - from os.path import abspath
-
 header:
-  logo: ?abspath(".tests/logo-snake.svg")
+  logo: logo-snake.svg
   name: Snakemake
   links:
     - text: Docs
@@ -17,7 +12,7 @@ header:
       url: https://x.com/johanneskoester
 
 hero:
-  logo: ?abspath(".tests/logo_light.svg")
+  logo: logo_light.svg
   statements:
     - "&gt;11 new citations per week ([old](https://badge.dimensions.ai/details/id/pub.1018944052) + [new paper](https://badge.dimensions.ai/details/id/pub.1137313608))"
     - "[&gt;920,000 downloads](https://anaconda.org/bioconda/snakemake)"
@@ -118,5 +113,5 @@ features:
     desc: |
       Automatic, interactive, self-contained [reports](https://snakemake.readthedocs.io/en/stable/snakefiles/reporting.html) ensure full transparency from results down to used steps, parameters, code, and software.
       The reports can moreover contain embedded results (from images, to PDFs and even [interactive HTML](https://github.com/datavzrd/datavzrd)) enabling a comprehensive reporting that combines analysis results with data provenance information.
-    img: ?abspath(".tests/report.png")
+    img: .tests/report.png
     url: https://snakemake.github.io/resources/report.html
