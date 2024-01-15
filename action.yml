@@ -8,6 +8,8 @@ inputs:
   path:
     description: Path to deploy to
     default: locosopa_action
+  deploy:
+    description: Boolean whether locosopa shall be deployed to github pages
 outputs:
   page-url:
     description: page url
@@ -36,14 +38,17 @@ runs:
         cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }}
 
     - name: Setup Pages
+      if: ${{ inputs.deploy == true }}
       uses: actions/configure-pages@v3
 
     - name: Upload artifact
+      if: ${{ inputs.deploy == true }}
       uses: actions/upload-pages-artifact@v1
       with:
         path: ${{ inputs.path }}/locosopa/build
 
     - name: Deploy to GitHub Pages
+      if: ${{ inputs.deploy == true }}
       id: deployment
       uses: actions/deploy-pages@v2
 
