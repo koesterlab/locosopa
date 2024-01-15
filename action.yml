@@ -18,7 +18,7 @@ runs:
       with:
         repository: "koesterlab/locosopa"
         path: locosopa
-        ref: ${{ github.action_ref }}
+        ref: ${{ env.ACTION_REF }}
 
     - uses: conda-incubator/setup-miniconda@v3
       with:
