@@ -33,7 +33,7 @@ runs:
     - name: Build page
       shell: bash -el {0}
       run: |
-        cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --configfile ${{ github.workspace }}/${{ inputs.config }}
+        cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }}
 
     - name: Setup Pages
       uses: actions/configure-pages@v3

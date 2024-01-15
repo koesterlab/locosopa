@@ -20,7 +20,7 @@ rule build_css:
 
 rule build_html:
     input:
-        config=config["landing-page-config"],
+        config=config["page_config"],
     output:
         "build/index.html",
     conda:
