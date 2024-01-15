@@ -7,20 +7,17 @@ assets = config["assets"].split(",")
 
 rule all:
     input:
-        "build/index.html",
-        "build/style.css",
-        [
-            f"build/{asset}"
-            for asset in assets
-        ]
+        # TODO add print_landscape once fixed
+        expand(["build/{page}.html", "build/{page}.css"], page=["index"]),
+        expand("build/{asset}", asset=assets),
 
 
 rule build_css:
     input:
-        "build/index.html",
+        "build/{page}.html",
         css="src/style.css",
     output:
-        "build/style.css",
+        "build/{page}.css",
     conda:
         "envs/nodejs.yaml"
     shell:
@@ -31,11 +28,11 @@ rule build_html:
     input:
         config=config["page_config"],
     output:
-        "build/index.html",
+        "build/{page}.html",
     conda:
         "envs/ytml.yaml"
     shell:
-        "ytml src build {input.config} index.ytml.yaml"
+        "ytml src build {input.config} {wildcards.page}.ytml.yaml"
 
 
 rule copy_asset:

@@ -3,6 +3,7 @@ channels:
   - nodefaults
 dependencies:
   - python =3.11
+  - pygithub
   - pip
   - pip:
       - ytml >=1.0.0,<2.0.0

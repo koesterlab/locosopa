@@ -1,0 +1,97 @@
+__use_yte__: true
+
+__definitions__:
+  - import re, os
+  - color = config["color"]
+  - |
+    def heroicon(name):
+      return f"https://raw.githubusercontent.com/tailwindlabs/heroicons/master/src/24/outline/{name}.svg"
+  - |
+    def hlt(string):
+      def colorize(name, brightness=500):
+        return f"<span class='text-{color}-{brightness}'>{name}</span>"
+      string = re.sub(r"!([a-zA-Z0-9_-]+)!", colorize(r"\1", 500), string)
+      string = re.sub(r"%([a-zA-Z0-9_-]+)%", colorize(r"\1", 200), string)
+      return string
+  - |
+    def relpath(path):
+      return str((config_dir / path).absolute())
+
+__variables__:
+  divider_cls: ?"bg-gradient-to-b from-{color}-800 via-white from-{color}-800 h-0.5"
+
+html:
+  lang: en
+  content:
+    head:
+      title: Snakemake - a framework for reproducible data analysis
+      link:
+        rel: stylesheet
+        href: print_landscape.css
+        content: null
+    body:
+      class: antialiased text-gray-500 flex flex-row
+      content:
+        header:
+          class: flex flex-row
+          content:
+            - div:
+                class: py-12
+                content:
+                  - file:
+                      path: ?relpath(config["hero"]["logo"])
+                      inline: true
+                      class: "mt-6 mx-auto mb-5"
+                      style: "width: 500px"
+                  - ul:
+                      class: mt-6 text-lg max-w-3xl text-gray-900 dark:text-white
+                      content:
+                        ?for item in config["hero"]["statements"]:
+                          - li:
+                              class: ?f"prose prose-a:text-white hover:prose-a:text-{color}-500 text-white prose-a:no-underline"
+                              content:
+                                markdown: ?item
+            - div:
+                class: ?f"bg-gradient-to-b from-white via-{color}-600 to-white w-1 h-screen"
+                content: null
+
+        section:
+          content:
+            div:
+              class: px-8 mx-auto mt-20 sm:mt-32 md:mt-40 flex flex-wrap gap-20 w-screen
+              content:
+                ?for i, item in enumerate(config["features"]):
+                  - div:
+                      class: md:flex md:flex-row md:space-x-4 md:justify-center md:items-center gap-10 w-1/4
+                      content:
+                        - div:
+                            class: w-1/3
+                            content:
+                              - h1:
+                                  class: text-lg font-bold text-gray-900
+                                  content: ?item["title"]
+                              - span:
+                                  class: ?f"prose prose-a:text-gray-900 hover:prose-a:decoration-{color}-200 text-gray-900 prose-a:decoration-{color}-500"
+                                  content:
+                                    markdown: ?item["desc"]
+                        - ?if "code" in item:
+                            code:
+                              class: prose-code whitespace-pre w-2/3
+                              content: ?hlt(item["code"])
+                          ?else:
+                            div:
+                              class: w-2/3
+                              content:
+                                a:
+                                  href: ?item["url"]
+                                  target: _blank
+                                  content:
+                                    img:
+                                      src:
+                                        file: 
+                                          path: ?relpath(item["img"])
+                                      class: "rounded-lg"
+                                      style: "width: 200px; max-width: 100vw;"
+                                      content: null
+
+

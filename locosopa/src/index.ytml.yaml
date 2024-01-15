@@ -1,20 +1,36 @@
 __use_yte__: true
 
 __definitions__:
-  - import re
+  - import re, os
+  - color = config["color"]
   - |
     def heroicon(name):
       return f"https://raw.githubusercontent.com/tailwindlabs/heroicons/master/src/24/outline/{name}.svg"
   - |
     def hlt(string):
-      def emerald(name, brightness=500):
-        return f"<span class='text-emerald-{brightness}'>{name}</span>"
-      string = re.sub(r"!([a-zA-Z0-9_-]+)!", emerald(r"\1", 500), string)
-      string = re.sub(r"%([a-zA-Z0-9_-]+)%", emerald(r"\1", 200), string)
+      def colorize(name, brightness=500):
+        return f"<span class='text-{color}-{brightness}'>{name}</span>"
+      string = re.sub(r"!([a-zA-Z0-9_-]+)!", colorize(r"\1", 500), string)
+      string = re.sub(r"%([a-zA-Z0-9_-]+)%", colorize(r"\1", 200), string)
       return string
   - |
     def relpath(path):
       return str((config_dir / path).absolute())
+  - |
+    from github import Github, Auth
+    token = os.getenv("GITHUB_TOKEN")
+    auth = Auth.Token(token) if token else None
+    github_client = Github(auth=auth)
+    users = [user for user in github_client.get_repo(config["repo"]["name"]).get_contributors() if user.login not in config["repo"]["contributors"]["skip"]]
+    visited = set()
+    companies = []
+    for user in users:
+      if user.company not in visited:
+        visited.add(user.company)
+        companies.append(user.company)
+
+__variables__:
+  divider_cls: ?"bg-gradient-to-r from-gray-900 via-{color}-800  to-gray-900 h-0.5"
 
 html:
   class: dark
@@ -24,7 +40,7 @@ html:
       title: Snakemake - a framework for reproducible data analysis
       link:
         rel: stylesheet
-        href: style.css
+        href: index.css
         content: null
       script:
         src:
@@ -33,10 +49,10 @@ html:
         crossorigin: anonymous
         content: null
     body:
-      class: antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900
+      class: antialiased text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900
       content:
         header:
-          class: bg-slate-800
+          class: bg-gray-800
           content:
             - div:
                 class: flex justify-between p-4
@@ -69,7 +85,7 @@ html:
                                 - li:
                                     a:
                                       href: ?item["url"]
-                                      class: "text-sm font-medium text-slate-300 hover:text-white hover:bg-emerald-500 rounded p-2 transition"
+                                      class: ?f"text-sm font-medium text-gray-300 hover:text-white hover:bg-{color}-500 rounded p-2 transition"
                                       content: ?item["text"]
 
             - div:
@@ -81,11 +97,11 @@ html:
                       class: "mt-6 mx-auto mb-5"
                       style: "width: 500px"
                   - ul:
-                      class: mt-6 text-lg max-w-3xl text-slate-900 dark:text-white
+                      class: mt-6 text-lg max-w-3xl text-gray-900 dark:text-white
                       content:
                         ?for item in config["hero"]["statements"]:
                           - li:
-                              class: prose prose-a:text-white hover:prose-a:text-emerald-500 text-white prose-a:no-underline
+                              class: ?f"prose prose-a:text-white hover:prose-a:text-{color}-500 text-white prose-a:no-underline"
                               content:
                                 markdown: ?item
                   - div:
@@ -94,10 +110,10 @@ html:
                         ?for item in config["hero"]["links"]:
                           - a:
                               href: ?item["url"]
-                              class: "bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 rounded"
+                              class: ?f"bg-{color}-600 hover:bg-{color}-500 text-white font-bold py-2 px-4 rounded"
                               content: ?item["text"]
             - div:
-                class: bg-gradient-to-r from-emerald-800 via-slate-900 to-emerald-800 h-1
+                class: ?f"bg-gradient-to-r from-{color}-800 via-gray-900 to-{color}-800 h-1"
                 content: null
 
         section:
@@ -117,15 +133,15 @@ html:
                                 order-last
                             content:
                               - h1:
-                                  class: text-lg font-bold text-slate-900 dark:text-white
+                                  class: text-lg font-bold text-gray-900 dark:text-white
                                   content: ?item["title"]
                               - span:
-                                  class: prose dark:prose-invert
+                                  class: ?f"prose prose-a:text-white hover:prose-a:decoration-{color}-200 text-white prose-a:decoration-{color}-500"
                                   content:
                                     markdown: ?item["desc"]
                         - ?if "code" in item:
                             code:
-                              class: prose-code dark:prose-invert whitespace-pre
+                              class: prose-code whitespace-pre
                               content: ?hlt(item["code"])
                           ?else:
                             div:
@@ -142,7 +158,43 @@ html:
                                     content: null
 
                   - div:
-                      class: bg-gradient-to-r from-slate-900 via-emerald-800  to-slate-900 h-0.5
+                      class: ?divider_cls
                       content: null
               
+                ?for _ in range(1):
+                  - div:
+                        class: md:flex md:flex-col md:space-x-4 gap-10 mb-10 text-gray-400
+                        content:
+                          - h1:
+                              class: text-lg font-bold text-center
+                              content:
+                                - Authors and Contributors
+                                - span:
+                                    title: ordered by number of contributions
+                                    content: "&nbsp;ⓘ"
+                          - ul:
+                              class: flex flex-wrap justify-center gap-4
+                              content:
+                                ?for user in users:
+                                    - li:
+                                        content:
+                                          a:
+                                            class: hover:decoration-{color}-500
+                                            href: ?f"https://github.com/{user.login}"
+                                            content: ?user.name or user.login
+                          - h1:
+                              class: text-lg font-bold text-center
+                              content:
+                                - Groups, Institutes, Companies, and Organizations
+                                - span:
+                                    title: ordered by contributors
+                                    content: "&nbsp;ⓘ"
+                          - ul:
+                              class: flex flex-wrap justify-center gap-4
+                              content:
+                                ?for company in companies:
+                                    - li: 
+                                        class: max-w-96 truncate
+                                        content: ?company
+
 

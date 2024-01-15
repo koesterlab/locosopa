@@ -1,3 +1,11 @@
+color: orange
+
+repo: 
+  name: snakemake/snakemake
+  contributors:
+    skip:
+      - github-actions[bot]
+
 header:
   logo: logo-snake.svg
   name: Snakemake
