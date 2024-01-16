@@ -17,3 +17,4 @@ jobs:
       - uses: ./
         with:
           config: .tests/config.yaml
+          deploy: "false"
