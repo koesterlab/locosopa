@@ -13,6 +13,7 @@ inputs:
     default: locosopa_action
   deploy:
     description: Boolean whether locosopa shall be deployed to github pages
+    default: "true"
 outputs:
   page-url:
     description: page url

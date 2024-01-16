@@ -2,7 +2,7 @@ from pathlib import Path
 
 asset_base = Path(config['asset_base'])
 
-assets = config["assets"].split(",")
+assets = config["assets"].split(",") if config["assets"] else []
 
 
 rule all:
