@@ -1,7 +1,7 @@
 color: orange
 
 repo: 
-  name: snakemake/snakemake
+  name: datavzrd/datavzrd
   contributors:
     skip:
       - github-actions[bot]
