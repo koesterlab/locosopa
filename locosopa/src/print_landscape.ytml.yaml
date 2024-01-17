@@ -24,7 +24,7 @@ html:
   lang: en
   content:
     head:
-      title: ?f"{config["project"]["name"]} - {config["project"]["slogan"]}"
+      title: ?f"{config['project']['name']}"
       link:
         rel: stylesheet
         href: print_landscape.css
