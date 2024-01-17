@@ -45,4 +45,9 @@ sidebar_links = lsc["docs"].get("sidebar-links")
 if sidebar_links is not None:
     html_theme_options["sidebar_links"] = sidebar_links
 
-globals().update(lsc["docs"]["sphinx-config"])
+project = lsc["project"]["name"]
+author = lsc["project"]["authors"]
+release = lsc["project"]["version"]
+copyright = lsc["project"]["copyright"]
+
+globals().update(lsc["docs"].get("sphinx-config", dict()))

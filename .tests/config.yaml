@@ -1,4 +1,12 @@
+project:
+  name: Snakemake
+  # the rest is optional for now and only needed if docs is activated
+  copyright: 2024, Johannes Koester
+  authors: Johannes Koester
+  version: 1.0.0
+
 color: orange
+
 logo:
   dark: logo-snake.svg
   light: logo-snake.svg
@@ -8,14 +16,13 @@ repo:
   contributors:
     skip:
       - github-actions[bot]
+      - dependabot[bot]
 
+# optional
 docs:
   src: docs
-  sphinx-config:
-    project: Snakemake
-    copyright: 2024, Johannes Koester
-    author: Johannes Koester
-    release: 1.0.0
+  # add optional overrides to the sphinx conf.py (will be added there as global variables)
+  # sphinx-config: 
   sidebar-links:
     - text: "Snakemake plugin catalog"
       alt: "Snakemake plugin catalog"
@@ -25,7 +32,6 @@ docs:
       href: "https://snakemake.github.io/snakemake-workflow-catalog"
 
 header:
-  name: Snakemake
   links:
     - text: Docs
       url: https://snakemake.readthedocs.io
@@ -51,7 +57,6 @@ hero:
       text: Tutorial
     - url: https://snakemake.github.io/snakemake-workflow-catalog
       text: Workflow catalog
-    
 
 features:
   - title: Readability and automation
