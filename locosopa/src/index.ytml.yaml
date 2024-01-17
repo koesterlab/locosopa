@@ -67,7 +67,7 @@ html:
                               content:
                                 - li:
                                     file:
-                                      path: ?relpath(config["header"]["logo"])
+                                      path: ?relpath(config["logo"]["dark"])
                                       class: "w-8 h-8"
                                       inline: true
                                 - li:
@@ -92,7 +92,7 @@ html:
                 class: py-12 mx-auto w-fit max-w-3xl
                 content:
                   - file:
-                      path: ?relpath(config["hero"]["logo"])
+                      path: ?relpath(config["hero"]["img"])
                       inline: true
                       class: "mt-6 mx-auto mb-5"
                       style: "width: 500px"
