@@ -24,7 +24,7 @@ html:
   lang: en
   content:
     head:
-      title: Snakemake - a framework for reproducible data analysis
+      title: ?f"{config['project']['name']}"
       link:
         rel: stylesheet
         href: print_landscape.css
