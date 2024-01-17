@@ -6,4 +6,4 @@ dependencies:
   - pygithub
   - pip
   - pip:
-      - ytml >=1.0.0,<2.0.0
+      - ytml >=1.0.1,<2.0.0
