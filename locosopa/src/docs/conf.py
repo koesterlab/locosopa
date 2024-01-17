@@ -40,7 +40,9 @@ html_theme_options = {
     "dark_logo": (lsc_dir / lsc["logo"]["dark"]).name,
     "light_logo": (lsc_dir / lsc["logo"]["dark"]).name,
     "navigation_style": "plain",
-    "sidebar_links": lsc["docs"]["sidebar-links"],
 }
+sidebar_links = lsc["docs"].get("sidebar-links")
+if sidebar_links is not None:
+    html_theme_options["sidebar_links"] = sidebar_links
 
 globals().update(lsc["docs"]["sphinx-config"])
