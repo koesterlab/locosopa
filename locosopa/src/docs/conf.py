@@ -34,7 +34,7 @@ exclude_patterns = []
 
 html_theme = 'sphinxawesome_theme'
 html_static_path = ['_static']
-html_css_files = [str(Path(__file__).parent / "custom.css")]
+html_css_files = ["custom.css"]
 html_theme_options = {
     "logo_light": (lsc_dir / lsc["logo"]["light"]).name,
     "logo_dark": (lsc_dir / lsc["logo"]["dark"]).name,

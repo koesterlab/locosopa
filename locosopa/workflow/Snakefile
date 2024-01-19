@@ -44,6 +44,7 @@ rule build_docs:
         page_config=config["page_config"],
         src=lambda w: page_config_dir / page_config["docs"]["src"],
         sphinx_conf=workflow.source_path("../src/docs/conf.py"),
+        css=workflow.source_path("../src/docs/custom.css"),
     output:
         directory("build/docs"),
     conda:
@@ -56,6 +57,7 @@ rule build_docs:
         "cp {input.sphinx_conf} $tmpdir; "
         "mkdir $tmpdir/_static; "
         "cp {params.logos} $tmpdir/_static; "
+        "cp {input.css} $tmpdir/_static; "
         "LOCOSOPA_CONFIG={params.page_config} sphinx-build -b html -c $tmpdir {input.src} {output}"
 
 
