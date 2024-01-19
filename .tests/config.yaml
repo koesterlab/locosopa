@@ -23,13 +23,9 @@ docs:
   src: docs
   # add optional overrides to the sphinx conf.py (will be added there as global variables)
   # sphinx-config: 
-  sidebar-links:
-    - text: "Snakemake plugin catalog"
-      alt: "Snakemake plugin catalog"
-      href: "https://snakemake.github.io/snakemake-plugin-catalog"
-    - text: "Snakemake workflow catalog"
-      alt: "Snakemake workflow catalog"
-      href: "https://snakemake.github.io/snakemake-workflow-catalog"
+  links:
+    "Snakemake plugin catalog": "https://snakemake.github.io/snakemake-plugin-catalog"
+    "Snakemake workflow catalog": "https://snakemake.github.io/snakemake-workflow-catalog"
 
 header:
   links:

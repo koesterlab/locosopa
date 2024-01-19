@@ -10,4 +10,4 @@ dependencies:
   - myst-parser
   - pip
   - pip:
-    - git+http://github.com/pradyunsg/lutra@8f61563
+      - sphinxawesome-theme

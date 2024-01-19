@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 from datetime import datetime
 import yaml
+from sphinxawesome_theme.postprocess import Icons
 
 lsc = yaml.load(open(os.environ["LOCOSOPA_CONFIG"]), Loader=yaml.SafeLoader)
 lsc_dir = Path(os.environ["LOCOSOPA_CONFIG"]).parent
@@ -31,19 +32,21 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'lutra'
+html_theme = 'sphinxawesome_theme'
 html_static_path = ['_static']
-html_css_files = [str(Path(__file__).parent / "theme.css")]
+html_css_files = [str(Path(__file__).parent / "custom.css")]
 html_theme_options = {
-    "primary_color": lsc["color"],
-    "secondary_color": lsc["color"],
-    "dark_logo": (lsc_dir / lsc["logo"]["dark"]).name,
-    "light_logo": (lsc_dir / lsc["logo"]["dark"]).name,
-    "navigation_style": "plain",
+    "logo_light": (lsc_dir / lsc["logo"]["light"]).name,
+    "logo_dark": (lsc_dir / lsc["logo"]["dark"]).name,
+    "awesome_external_links": True,
+    "awesome_headerlinks": True,
+    "show_prev_next": False,
 }
-sidebar_links = lsc["docs"].get("sidebar-links")
-if sidebar_links is not None:
-    html_theme_options["sidebar_links"] = sidebar_links
+links = lsc["docs"].get("links")
+if links is not None:
+    html_theme_options["main_nav_links"] = links
+
+html_permalinks_icon = Icons.permalinks_icon
 
 project = lsc["project"]["name"]
 author = lsc["project"]["authors"]
