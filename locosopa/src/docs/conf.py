@@ -41,10 +41,11 @@ html_theme_options = {
     "awesome_external_links": True,
     "awesome_headerlinks": True,
     "show_prev_next": False,
+    "main_nav_links": dict(),
 }
 links = lsc["docs"].get("links")
 if links is not None:
-    html_theme_options["main_nav_links"] = links
+    html_theme_options["main_nav_links"].update(links)
 
 html_permalinks_icon = Icons.permalinks_icon
 
