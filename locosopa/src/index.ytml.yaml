@@ -99,7 +99,7 @@ html:
                       path: ?relpath(config["hero"]["img"])
                       inline: true
                       class: "mt-6 mx-auto mb-5"
-                      style: "width: 500px"
+                      style: "height: 88px;"
                   - ul:
                       class: mt-6 text-lg max-w-3xl text-gray-900 dark:text-white
                       content:
@@ -109,7 +109,7 @@ html:
                               content:
                                 markdown: ?item
                   - div:
-                      class: mt-6 max-w-3xl sm:mt-10 flex space-x-6 text-sm
+                      class: mt-6 max-w-3xl sm:mt-10 flex space-x-6 text-sm justify-center
                       content:
                         ?for item in hero_links:
                           - a:

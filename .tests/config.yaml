@@ -47,12 +47,6 @@ hero:
   links:
     - url: https://doi.org/10.12688/f1000research.29032.2
       text: Read the paper
-    - url: https://snakemake.readthedocs.io
-      text: Read the docs
-    - url: https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html
-      text: Tutorial
-    - url: https://snakemake.github.io/snakemake-workflow-catalog
-      text: Workflow catalog
 
 features:
   - title: Readability and automation
