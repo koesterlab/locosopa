@@ -5,3 +5,7 @@
 .image-reference {
     border-bottom: none !important;
 }
+
+#content {
+    overflow-x: auto;
+}
