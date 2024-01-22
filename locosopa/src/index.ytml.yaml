@@ -161,7 +161,7 @@ html:
                                     ?if item["img-width"]:
                                       style: "width: 200px; max-width: 100vw;"
                                     ?else:
-                                      style: ?f'width: {item["img-width"]}; max-width: 100vw;'
+                                      style: ?f"width: {item['img-width']}; max-width: 100vw;"
                                     content: null
 
                   - div:
