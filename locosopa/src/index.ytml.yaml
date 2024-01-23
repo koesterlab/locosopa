@@ -101,8 +101,7 @@ html:
                   - file:
                       path: ?relpath(config["hero"]["img"])
                       inline: true
-                      class: "mt-6 mx-auto mb-5"
-                      style: "height: 88px;"
+                      class: "mt-6 mx-auto mb-5 h-20"
                   - ul:
                       class: mt-6 text-lg max-w-3xl text-gray-900 dark:text-white
                       content:
