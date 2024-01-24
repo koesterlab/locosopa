@@ -34,7 +34,7 @@ __definitions__:
       hero_links.insert(0, {"text": "Read the docs", "url": "docs/index.html"})
 
 __variables__:
-  divider_cls: ?"bg-gradient-to-r from-gray-900 via-{color}-800  to-gray-900 h-0.5"
+  divider_cls: ?f"bg-gradient-to-r from-gray-900 via-{color}-800  to-gray-900 h-0.5"
 
 html:
   class: dark
