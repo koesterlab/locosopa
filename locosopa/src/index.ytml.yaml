@@ -7,6 +7,9 @@ __definitions__:
     def heroicon(name):
       return f"https://raw.githubusercontent.com/tailwindlabs/heroicons/master/src/24/outline/{name}.svg"
   - |
+    def img_width(width):
+      return f"width: {width}; max-width: 100vw;"
+  - |
     def hlt(string):
       def colorize(name, brightness=500):
         return f"<span class='text-{color}-{brightness}'>{name}</span>"
@@ -98,8 +101,7 @@ html:
                   - file:
                       path: ?relpath(config["hero"]["img"])
                       inline: true
-                      class: "mt-6 mx-auto mb-5"
-                      style: "height: 88px;"
+                      class: "mt-6 mx-auto mb-5 h-20"
                   - ul:
                       class: mt-6 text-lg max-w-3xl text-gray-900 dark:text-white
                       content:
@@ -158,7 +160,10 @@ html:
                                       file: 
                                         path: ?relpath(item["img"])
                                     class: "rounded-lg"
-                                    style: "width: 200px; max-width: 100vw;"
+                                    ?if 'img-width' in item:
+                                      style: ?img_width(item['img-width'])
+                                    ?else:
+                                      style: "width: 200px; max-width: 100vw;"
                                     content: null
 
                   - div:
