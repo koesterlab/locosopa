@@ -159,11 +159,7 @@ html:
                                     src:
                                       file: 
                                         path: ?relpath(item["img"])
-                                    class: "rounded-lg"
-                                    ?if 'img-width' in item:
-                                      style: ?img_width(item['img-width'])
-                                    ?else:
-                                      style: "width: 200px; max-width: 100vw;"
+                                    class: "rounded-lg max-w-md"
                                     content: null
 
                   - div:
