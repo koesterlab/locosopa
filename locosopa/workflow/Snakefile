@@ -5,7 +5,7 @@ import os
 page_config = yaml.load(open(config["page_config"]), Loader=yaml.SafeLoader)
 page_config_dir = Path(config["page_config"]).parent
 doc_config = page_config.get("docs", None)
-assets = config.get("assets", [])
+assets = page_config.get("assets", [])
 
 
 rule all:
