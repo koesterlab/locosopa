@@ -33,6 +33,8 @@ rule build_html:
         config=config["page_config"],
     output:
         "build/{page}.html",
+    wildcard_constraints:
+        page="[^/]+",
     conda:
         "envs/ytml.yaml"
     shell:
