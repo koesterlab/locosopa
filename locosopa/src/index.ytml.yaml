@@ -99,7 +99,7 @@ html:
                 class: py-12 mx-auto w-fit max-w-3xl
                 content:
                   - file:
-                      path: ?relpath(config["hero"]["img"])
+                      path: ?relpath(config["hero"]["img"]["dark"])
                       inline: true
                       class: "mt-6 mx-auto mb-5 h-20"
                   - ul:

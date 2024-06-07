@@ -11,7 +11,7 @@ assets = page_config.get("assets", [])
 rule all:
     input:
         # TODO add print_landscape once fixed
-        expand(["build/{page}.html", "build/{page}.css"], page=["index"]),
+        expand(["build/{page}.html", "build/{page}.css"], page=["index", "print_landscape"]),
         expand("build/{asset}", asset=assets),
         "build/docs" if doc_config else [],
 
@@ -31,6 +31,7 @@ rule build_css:
 rule build_html:
     input:
         config=config["page_config"],
+        page="src/{page}.ytml.yaml",
     output:
         "build/{page}.html",
     wildcard_constraints:
