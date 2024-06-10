@@ -31,6 +31,7 @@ html:
         content: null
     body:
       class: antialiased text-gray-500 flex flex-row
+      style: "font-size: 8pt;"
       content:
         header:
           class: flex flex-row gap-6
@@ -47,17 +48,19 @@ html:
                       content:
                         ?for item in config["hero"]["statements"]:
                           - li:
-                              class: ?f"prose prose-a:text-black hover:prose-a:text-{color}-500 text-black prose-a:no-underline"
+                              class: ?f"prose-a:text-black hover:prose-a:text-{color}-500 text-black prose-a:no-underline"
                               content:
                                 markdown: ?item
             - div:
-                class: ?f"bg-gradient-to-b from-white via-{color}-600 to-white w-1"
+                class: ?f"bg-gradient-to-b from-white via-{color}-600 to-white w-1 self-start"
+                style: "height: 200mm;"
                 content: null
 
         section:
           content:
             div:
-              class: px-8 mx-auto mt-6 flex flex-wrap gap-10 w-screen
+              class: px-8 mx-auto mt-6 flex flex-wrap gap-10
+              style: "width: 297mm;"
               content:
                 ?for i, item in enumerate(config["features"]):
                   - div:
@@ -70,16 +73,19 @@ html:
                                   class: text-lg font-bold text-gray-900
                                   content: ?item["title"]
                               - span:
-                                  class: ?f"prose prose-a:text-gray-900 hover:prose-a:decoration-{color}-200 text-gray-900 prose-a:decoration-{color}-500"
+                                  class: ?f"prose-a:text-gray-900 hover:prose-a:decoration-{color}-200 text-gray-900 prose-a:decoration-{color}-500"
+                                  style: |
+                                    text-align: justify;
+                                    hyphens: auto;
                                   content:
                                     markdown: ?item["desc"]
                         - ?if "code" in item:
                             code:
-                              class: prose-code whitespace-pre w-[33em]
+                              class: prose-code whitespace-pre w-[33em] self-center
                               content: ?hlt(item["code"])
                           ?else:
                             div:
-                              class: w-[33em]
+                              class: w-[33em] self-center
                               content:
                                 a:
                                   href: ?item["url"]
