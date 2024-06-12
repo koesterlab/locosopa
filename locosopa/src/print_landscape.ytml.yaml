@@ -64,7 +64,7 @@ html:
               content:
                 ?for i, item in enumerate(config["features"]):
                   - div:
-                      class: flex flex-row space-x-4 justify-center items-start gap-10
+                      class: flex flex-row space-x-4 justify-center items-start gap-10 break-inside-avoid
                       content:
                         - div:
                             class: w-[20em]
