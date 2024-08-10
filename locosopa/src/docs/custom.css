@@ -9,3 +9,7 @@
 #content {
     overflow-x: auto;
 }
+
+code {
+    font-family: monospace !important;
+}
