@@ -29,7 +29,7 @@ runs:
     - uses: conda-incubator/setup-miniconda@v3
       with:
         python-version: 3.11
-        mamba-version: "*"
+        miniforge-version: latest
         activate-environment: locosopa-env
         environment-file: ${{ inputs.path }}/locosopa/environment.yml
 
