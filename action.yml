@@ -39,7 +39,7 @@ runs:
         cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }}
 
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
       with:
         path: ${{ inputs.path }}/locosopa/build
 
