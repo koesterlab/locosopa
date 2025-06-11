@@ -2,6 +2,7 @@ __use_yte__: true
 
 __definitions__:
   - import re, os
+  - from itertools import chain
   - color = config["color"]
   - |
     def heroicon(name):
@@ -34,15 +35,14 @@ html:
       style: "font-size: 8pt;"
       content:
         header:
-          class: flex flex-row gap-6
+          class: flex flex-row gap-6 w-[100em]
           content:
             - div:
                 content:
                   - file:
                       path: ?relpath(config["hero"]["img"]["light"])
                       inline: true
-                      class: "mt-6 mx-auto mb-5"
-                      style: "width: 500px"
+                      class: "mt-6 mx-auto mb-5 w-full"
                   - ul:
                       class: mt-6 text-lg max-w-3xl text-gray-900
                       content:
@@ -60,9 +60,8 @@ html:
           content:
             div:
               class: px-8 mx-auto mt-6 flex flex-wrap gap-10
-              style: "width: 297mm;"
               content:
-                ?for i, item in enumerate(config["features"]):
+                ?for i, item in enumerate(chain(config["features"], config["features"])):
                   - div:
                       class: flex flex-row space-x-4 justify-center items-start gap-10 break-inside-avoid
                       content:
