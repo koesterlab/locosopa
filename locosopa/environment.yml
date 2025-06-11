@@ -4,4 +4,4 @@ channels:
   - nodefaults
 dependencies:
   - python =3.11
-  - snakemake-minimal =8.1
+  - snakemake-minimal =9.3
