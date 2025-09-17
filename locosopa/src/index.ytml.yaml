@@ -152,8 +152,11 @@ html:
                           ?else:
                             div:
                               a:
-                                href: ?item["url"]
-                                target: _blank
+                                ?if "url" in item:
+                                  href: ?item["url"]
+                                  target: _blank
+                                ?else:
+                                  href: ?relpath(item["img"])
                                 content:
                                   img:
                                     src:
