@@ -80,7 +80,7 @@ html:
                                 - li:
                                     span:
                                       class: font-bold
-                                      content: ?config["project"]["name"]
+                                      content: ?config["header"]["name"]
                   - div:
                       class: flex items-center
                       content:
