@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/koesterlab/locosopa/compare/v1.0.0...v1.0.1) (2025-09-17)
+
+
+### Bug Fixes
+
+* handle missing url for img features ([34f8564](https://github.com/koesterlab/locosopa/commit/34f85641a399f957f573929f1fb9e7c39888de8d))
+
 ## 1.0.0 (2025-09-17)
 
 
