@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.4](https://github.com/koesterlab/locosopa/compare/v1.0.3...v1.0.4) (2025-09-18)
+
+
+### Bug Fixes
+
+* img link path ([01e868b](https://github.com/koesterlab/locosopa/commit/01e868b17d37bc96cbd7c74ed80536a977efb42f))
+* logo size ([c304cba](https://github.com/koesterlab/locosopa/commit/c304cbaabc5ef80a8c43ba66f23d06afa454da6a))
+
 ## [1.0.3](https://github.com/koesterlab/locosopa/compare/v1.0.2...v1.0.3) (2025-09-18)
 
 
