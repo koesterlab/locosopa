@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/koesterlab/locosopa/compare/v1.0.2...v1.0.3) (2025-09-18)
+
+
+### Bug Fixes
+
+* syntax highlighting ([5ba1f73](https://github.com/koesterlab/locosopa/commit/5ba1f73153b07a132506b9d417d7a3efdc62e2af))
+
 ## [1.0.2](https://github.com/koesterlab/locosopa/compare/v1.0.1...v1.0.2) (2025-09-18)
 
 
