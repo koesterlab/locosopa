@@ -13,8 +13,8 @@ __definitions__:
     def hlt(string):
       def colorize(name, brightness=500):
         return f"<span class='text-{color}-{brightness}'>{name}</span>"
-      string = re.sub(r"!([a-zA-Z0-9_\-{}\.\*=><:\/]+)!", colorize(r"\1", 500), string)
-      string = re.sub(r"%([a-zA-Z0-9_\-{}\.\*=><:\/]+)%", colorize(r"\1", 200), string)
+      string = re.sub(r"!([a-zA-Z0-9_\-{}\.,\*=><:\/]+)!", colorize(r"\1", 500), string)
+      string = re.sub(r"%([a-zA-Z0-9_\-{}\.,\*=><:\/]+)%", colorize(r"\1", 400), string)
       return string
   - |
     def relpath(path):
