@@ -75,7 +75,7 @@ html:
                                 - li:
                                     file:
                                       path: ?relpath(config["logo"]["dark"])
-                                      class: "w-8 h-8"
+                                      class: "h-8"
                                       inline: true
                                 - li:
                                     span:
