@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/koesterlab/locosopa/compare/v1.0.1...v1.0.2) (2025-09-18)
+
+
+### Bug Fixes
+
+* use header name ([e897348](https://github.com/koesterlab/locosopa/commit/e8973482f6c861e121de0d4538d077cbc4c029a1))
+
 ## [1.0.1](https://github.com/koesterlab/locosopa/compare/v1.0.0...v1.0.1) (2025-09-17)
 
 
