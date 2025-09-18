@@ -65,23 +65,6 @@ html:
                 class: flex justify-between p-4
                 content:
                   - div:
-                      content:
-                        a:
-                          href: "#"
-                          content:
-                            ul:
-                              class: flex items-center gap-x-4
-                              content:
-                                - li:
-                                    file:
-                                      path: ?relpath(config["logo"]["dark"])
-                                      class: "h-8"
-                                      inline: true
-                                - li:
-                                    span:
-                                      class: font-bold
-                                      content: ?config["header"].get("name", config['project']['name'])
-                  - div:
                       class: flex items-center
                       content:
                         nav:
