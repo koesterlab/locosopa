@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/koesterlab/locosopa/compare/v1.0.4...v1.0.5) (2025-09-18)
+
+
+### Miscellaneous Chores
+
+* Release 1.0.5 ([12d8b40](https://github.com/koesterlab/locosopa/commit/12d8b40db6434a9db65f372034e070c0944df1e8))
+
 ## [1.0.4](https://github.com/koesterlab/locosopa/compare/v1.0.3...v1.0.4) (2025-09-18)
 
 
