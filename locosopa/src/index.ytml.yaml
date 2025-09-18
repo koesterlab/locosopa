@@ -156,11 +156,13 @@ html:
                                   href: ?item["url"]
                                   target: _blank
                                 ?else:
-                                  href: ?relpath(item["img"])
+                                  href:
+                                    file:
+                                        path: ?relpath(item["img"])
                                 content:
                                   img:
                                     src:
-                                      file: 
+                                      file:
                                         path: ?relpath(item["img"])
                                     class: "rounded-lg"
                                     ?if 'img-width' in item:
