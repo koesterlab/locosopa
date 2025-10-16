@@ -45,6 +45,7 @@ html_theme_options = {
 links = lsc["docs"].get("links")
 if links is not None:
     html_theme_options["main_nav_links"].update(links)
+html_js_files = lsc.get("javascript_assets", [])
 
 html_permalinks_icon = Icons.permalinks_icon
 
