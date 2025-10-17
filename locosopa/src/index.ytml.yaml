@@ -90,7 +90,7 @@ html:
                       content:
                         ?for item in config["hero"]["statements"]:
                           - li:
-                              class: ?f"prose prose-a:text-white hover:prose-a:text-{color}-500 text-white prose-a:no-underline"
+                              class: ?f"prose prose-a:text-white hover:prose-a:text-{color}-500 text-white"
                               content:
                                 markdown: ?item
                   - div:
