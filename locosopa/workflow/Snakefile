@@ -56,12 +56,14 @@ rule build_docs:
     params:
         page_config=lambda w, input: os.path.abspath(input.page_config),
         logos=[str(page_config_dir / logo) for logo in page_config["logo"].values()],
+        js_assets=[str(page_config_dir / js) for js in page_config.get("javascript_assets", [])],
     shell:
         "tmpdir=$(mktemp -d); "
         "cp {input.sphinx_conf} $tmpdir; "
         "cp {input.docutils_conf} $tmpdir; "
         "mkdir $tmpdir/_static; "
         "cp {params.logos} $tmpdir/_static; "
+        "cp {params.js_assets} $tmpdir/_static; "
         "cp {input.css} $tmpdir/_static; "
         "LOCOSOPA_CONFIG={params.page_config} sphinx-build -b html -c $tmpdir {input.src} {output}"
 
