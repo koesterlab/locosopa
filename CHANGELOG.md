@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/koesterlab/locosopa/compare/v1.0.5...v1.0.6) (2025-11-22)
+
+
+### Bug Fixes
+
+* Add support for JavaScript assets in conf.py via javascript_assets ([ab0fecc](https://github.com/koesterlab/locosopa/commit/ab0feccc5f761786082cbf3fd94fad6d9b6a6e0b))
+
 ## [1.0.5](https://github.com/koesterlab/locosopa/compare/v1.0.4...v1.0.5) (2025-09-18)
 
 
