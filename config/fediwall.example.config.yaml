@@ -1,0 +1,43 @@
+# Fediwall Configuration Example (YAML format)
+# Reference: https://github.com/defnull/fediwall
+
+title: "Snakemake Community Wall"
+subtitle: "Follow the #Snakemake hashtag on the Fediverse"
+
+# Required: List of hashtags to monitor (without the # symbol)
+hashtags:
+  - snakemake
+  - SnakemakeHackathon
+  - SnakemakeHackathon2025
+  - SnakemakeHackathon2026
+  - SnakemakeHackathon2027
+  - SnakemakeWrapper
+  - SnakemakeWrappers
+  - Snakemake_Wrapper
+  - Snakemake_Wrappers
+  - SnakemakePaper
+  - SnakemakePapers
+  - Snakemake_Paper
+  - Snakemake_Papers
+
+# Optional: Specific accounts to follow
+accounts: []
+
+# Optional: Mastodon/Fediverse servers to query
+servers:
+  - mastodon.social
+  - fosstodon.org
+  - fediscience.org
+  - scholar.social
+  - genomic.social
+
+# Optional: Theme (auto, light, or dark)
+theme: auto
+
+# Optional: Auto-refresh interval in seconds
+autorefresh: 30
+
+# Optional: Display settings
+showboosts: true
+showreplies: false
+showsensitive: false
