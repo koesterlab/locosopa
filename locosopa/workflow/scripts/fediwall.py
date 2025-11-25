@@ -2,6 +2,7 @@
 Snakemake script to download and configure fediwall for the Snakemake community.
 """
 
+import os
 import tempfile
 import hashlib
 import json
@@ -12,8 +13,8 @@ from pathlib import Path
 from typing import Any, Dict
 
 try:
-    import yaml  # Optional; only needed if user supplies YAML config
-except ImportError:  # pragma: no cover - safe fallback
+    import yaml
+except ImportError:
     yaml = None
 
 
@@ -114,8 +115,6 @@ def main():
                     shutil.copy2(item, fediwall_dir / item.name)
 
         # Clean up downloaded file
-        import os
-
         os.unlink(tmp_file.name)
 
     # Write merged config file
