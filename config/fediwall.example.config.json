@@ -1,0 +1,28 @@
+{
+  "title": "Snakemake Community Wall",
+  "subtitle": "Follow the #Snakemake hashtag on the Fediverse",
+  "hashtags": [
+    "snakemake",
+    "SnakemakeHackathon",
+    "SnakemakeHackathon2025",
+    "SnakemakeHackathon2026",
+    "SnakemakeHackathon2027",
+    "SnakemakeWrapper",
+    "SnakemakeWrappers",
+    "Snakemake_Wrapper",
+    "Snakemake_Wrappers"
+  ],
+  "accounts": [],
+  "servers": [
+    "mastodon.social",
+    "fosstodon.org",
+    "fediscience.org",
+    "scholar.social",
+    "genomic.social"
+  ],
+  "theme": "auto",
+  "autorefresh": 30,
+  "showboosts": true,
+  "showreplies": false,
+  "showsensitive": false
+}
