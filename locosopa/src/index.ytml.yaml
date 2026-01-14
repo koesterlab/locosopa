@@ -24,16 +24,18 @@ __definitions__:
     token = os.getenv("GITHUB_TOKEN")
     auth = Auth.Token(token) if token else None
     github_client = Github(auth=auth)
-    users = [user for user in github_client.get_repo(config["repo"]["name"]).get_contributors() if user.login not in config["repo"]["contributors"]["skip"]]
+    users = [user for user in github_client.get_repo(config["repo"]["name"]).get_contributors()._with_params(per_page=100) if user.login not in config["repo"]["contributors"]["skip"]]
     visited = set()
     companies = []
     for user in users:
       try:
-        if user.company not in visited:
+        company = user.company
+      except UnknownObjectException as e:
+        print(f"No company/institute set for user {user.login}.")
+        continue
+      if company not in visited:
           visited.add(user.company)
           companies.append(user.company)
-      except UnknownObjectException as e:
-        raise ValueError("Unable to retrieve company of user {user.login}: {e}")
   - |
     hero_links = config["hero"]["links"]
     if "docs" in config:
