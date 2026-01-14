@@ -28,9 +28,12 @@ __definitions__:
     visited = set()
     companies = []
     for user in users:
-      if user.company not in visited:
-        visited.add(user.company)
-        companies.append(user.company)
+      try:
+        if user.company not in visited:
+          visited.add(user.company)
+          companies.append(user.company)
+      except UnknownObjectException as e:
+        raise ValueError("Unable to retrieve company of user {user.login}: {e}")
   - |
     hero_links = config["hero"]["links"]
     if "docs" in config:
@@ -157,7 +160,7 @@ html:
                   - div:
                       class: ?divider_cls
                       content: null
-              
+
                 ?for _ in range(1):
                   - div:
                         class: md:flex md:flex-col md:space-x-4 gap-10 mb-10 text-gray-400
@@ -190,8 +193,6 @@ html:
                               class: flex flex-wrap justify-center gap-4
                               content:
                                 ?for company in companies:
-                                    - li: 
+                                    - li:
                                         class: max-w-96 truncate
                                         content: ?company
-
-
