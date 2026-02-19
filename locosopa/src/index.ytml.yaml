@@ -24,7 +24,7 @@ __definitions__:
     token = os.getenv("GITHUB_TOKEN")
     auth = Auth.Token(token) if token else None
     github_client = Github(auth=auth)
-    users = [user for user in github_client.get_repo(config["repo"]["name"]) if user.login not in config["repo"]["contributors"]["skip"]]
+    users = [user for user in github_client.get_repo(config["repo"]["name"]).get_contributors() if user.login not in config["repo"]["contributors"]["skip"]]
     visited = set()
     companies = []
     for user in users:
