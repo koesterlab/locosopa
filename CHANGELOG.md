@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.7](https://github.com/koesterlab/locosopa/compare/v1.0.6...v1.0.7) (2026-02-19)
+
+
+### Bug Fixes
+
+* better error handling for company retrieval ([0cfb809](https://github.com/koesterlab/locosopa/commit/0cfb809a698a6faca3a076ff66b3adb53880e824))
+* handle missing company ([7dc2515](https://github.com/koesterlab/locosopa/commit/7dc2515e2a4b3676130a3e519dd79ce8047ef2e9))
+
 ## [1.0.6](https://github.com/koesterlab/locosopa/compare/v1.0.5...v1.0.6) (2025-11-22)
 
 
