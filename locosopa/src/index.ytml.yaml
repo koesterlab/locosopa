@@ -30,18 +30,25 @@ __definitions__:
         per_page=100,
         seconds_between_requests=1,
     )
-    users = [user for user in github_client.get_repo(config["repo"]["name"]).get_contributors() if user.login not in config["repo"]["contributors"]["skip"]]
+    user_queries = [user for user in github_client.get_repo(config["repo"]["name"]).get_contributors() if user.login not in config["repo"]["contributors"]["skip"]]
     visited = set()
+    users = []
     companies = []
-    for user in users:
+    for user in user_queries:
+      try:
+        name = user.name
+        login = user.login
+      except UnknownObjectException:
+        continue
+      users.append({"name": name or login, "login": login})
       try:
         company = user.company
       except UnknownObjectException as e:
-        print(f"No company/institute set for user {user.login}.")
+        print(f"No company/institute set for user {login}.")
         continue
       if company not in visited:
-          visited.add(user.company)
-          companies.append(user.company)
+          visited.add(company)
+          companies.append(company)
   - |
     hero_links = config["hero"]["links"]
     if "docs" in config:
@@ -188,8 +195,8 @@ html:
                                         content:
                                           a:
                                             class: hover:decoration-{color}-500
-                                            href: ?f"https://github.com/{user.login}"
-                                            content: ?user.name or user.login
+                                            href: ?f"https://github.com/{user['login']}"
+                                            content: ?user["name"]
                           - h1:
                               class: text-lg font-bold text-center
                               content:
