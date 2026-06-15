@@ -32,6 +32,8 @@ jobs:
           environment-file: environment.yml
 
       - name: Build page
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           snakemake -c1 --software-deployment-method conda
 
