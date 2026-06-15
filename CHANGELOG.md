@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/koesterlab/locosopa/compare/v1.1.0...v1.1.1) (2026-06-15)
+
+
+### Bug Fixes
+
+* missing import ([d2ce6f0](https://github.com/koesterlab/locosopa/commit/d2ce6f0da8e82900fc854b97aeee43bdc1173fe3))
+
 ## [1.1.0](https://github.com/koesterlab/locosopa/compare/v1.0.6...v1.1.0) (2026-06-15)
 
 
