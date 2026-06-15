@@ -2,6 +2,7 @@ __use_yte__: true
 
 __definitions__:
   - import re, os
+  - from github.GithubException import UnknownObjectException
   - color = config["color"]
   - |
     def heroicon(name):
