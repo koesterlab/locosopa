@@ -22,7 +22,8 @@ __definitions__:
   - |
     from github import Github, Auth
     token = os.getenv("GITHUB_TOKEN")
-    auth = Auth.Token(token) if token else None
+    assert token, "GITHUB_TOKEN must be provided"
+    auth = Auth.Token(token)
     github_client = Github(
         auth=auth,
         per_page=100,
