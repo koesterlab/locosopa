@@ -1,11 +1,26 @@
 from pathlib import Path
 import yaml
 import os
+import hashlib
+import json
+import shutil
+import tarfile
+import urllib.request
 
 page_config = yaml.load(open(config["page_config"]), Loader=yaml.SafeLoader)
 page_config_dir = Path(config["page_config"]).parent
 doc_config = page_config.get("docs", None)
 assets = page_config.get("assets", [])
+
+# Optional fediwall configuration: expects a key "fediwall_config" in page_config pointing
+# to a JSON or YAML file with the wall configuration (title, subtitle, hashtags, etc.).
+fediwall_config_rel = page_config.get("fediwall_config", None)
+if fediwall_config_rel:
+    fediwall_config_path = (page_config_dir / fediwall_config_rel).resolve()
+    fediwall_enabled = fediwall_config_path.exists()
+else:
+    fediwall_config_path = None
+    fediwall_enabled = False
 
 
 rule all:
@@ -14,6 +29,7 @@ rule all:
         expand(["build/{page}.html", "build/{page}.css"], page=["index", "print_landscape"]),
         expand("build/{asset}", asset=assets),
         "build/docs" if doc_config else [],
+        "build/fediwall/wall-config.json" if fediwall_enabled else [],
 
 
 rule build_css:
@@ -75,3 +91,20 @@ rule copy_asset:
     shell:
         "mkdir -p $(dirname {output}); "
         "cp {input} {output}"
+
+
+if fediwall_enabled:
+    rule build_fediwall:
+        input:
+            config_source=str(fediwall_config_path)
+        output:
+            config="build/fediwall/wall-config.json",
+            directory=directory("build/fediwall")
+        params:
+            version="v1.4.0",
+            expected_sha256="9aeca19df37e1c872efa0e8047660eb15cfe24f8b14e5c198a20d966e7e456bc",
+            config_source=lambda wildcards, input: input.config_source
+        conda:
+            "envs/fediwall.yaml"
+        script:
+            "scripts/fediwall.py"
