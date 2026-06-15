@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/koesterlab/locosopa/compare/v1.1.2...v1.2.0) (2026-06-15)
+
+
+### Features
+
+* skip companies if requested (using the same skiplist as contributors) ([243a49c](https://github.com/koesterlab/locosopa/commit/243a49caccca7b6bd85e86096b59242aa438b591))
+
+
+### Bug Fixes
+
+* only strip company string if not None ([6ec2e17](https://github.com/koesterlab/locosopa/commit/6ec2e17c5d08313a23060c065532173c83c07346))
+
 ## [1.1.2](https://github.com/koesterlab/locosopa/compare/v1.1.1...v1.1.2) (2026-06-15)
 
 
