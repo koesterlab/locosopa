@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.1.0](https://github.com/koesterlab/locosopa/compare/v1.0.6...v1.1.0) (2026-06-15)
+
+
+### Features
+
+* throttle PyGithub contributor requests ([5ce2a71](https://github.com/koesterlab/locosopa/commit/5ce2a71bfc59ca7fcd9a4b26c4aa7c827b3beddb))
+
+
+### Bug Fixes
+
+* better error handling for company retrieval ([0cfb809](https://github.com/koesterlab/locosopa/commit/0cfb809a698a6faca3a076ff66b3adb53880e824))
+* handle missing company ([7dc2515](https://github.com/koesterlab/locosopa/commit/7dc2515e2a4b3676130a3e519dd79ce8047ef2e9))
+* Specify version constraint for sphinxawesome-theme ([8d27bbc](https://github.com/koesterlab/locosopa/commit/8d27bbc5f37cebfecbf8d1644fddff9151fb0ba3))
+* Specify version constraint for sphinxawesome-theme ([36f67c3](https://github.com/koesterlab/locosopa/commit/36f67c38b8de7ff8ad51e3e5debca033140649b1))
+
+
+### Performance Improvements
+
+* throttle PyGithub contributor fetches in homepage generation ([c624688](https://github.com/koesterlab/locosopa/commit/c624688cd5b1a145f58b6cccd3704dcf00ace1d4))
+
 ## [1.0.6](https://github.com/koesterlab/locosopa/compare/v1.0.5...v1.0.6) (2025-11-22)
 
 
