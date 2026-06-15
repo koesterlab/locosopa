@@ -42,10 +42,12 @@ __definitions__:
         continue
       users.append({"name": name or login, "login": login})
       try:
-        company = user.company.strip()
+        company = user.company
       except UnknownObjectException as e:
         print(f"No company/institute set for user {login}.")
         continue
+      if company is not None:
+        company = company.strip()
       if company not in visited and company not in config["repo"]["contributors"]["skip"]:
           visited.add(company)
           companies.append(company)
