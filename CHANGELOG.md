@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/koesterlab/locosopa/compare/v1.1.1...v1.1.2) (2026-06-15)
+
+
+### Bug Fixes
+
+* handle permission issues when retrieving user name and login ([2106e27](https://github.com/koesterlab/locosopa/commit/2106e2767a94328b4ad17c708e1c9f1d668a91ec))
+
 ## [1.1.1](https://github.com/koesterlab/locosopa/compare/v1.1.0...v1.1.1) (2026-06-15)
 
 
