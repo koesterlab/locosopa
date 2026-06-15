@@ -11,6 +11,9 @@ inputs:
   deploy:
     description: Boolean whether locosopa shall be deployed to github pages
     default: "true"
+  token:
+    description: Provide GITHUB_TOKEN for API access, the default actions token (secrets.GITHUB_TOKEN) is sufficient
+    required: true
 outputs:
   page-url:
     description: page url
@@ -35,6 +38,8 @@ runs:
 
     - name: Build page
       shell: bash -el {0}
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
       run: |
         cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }}
 
