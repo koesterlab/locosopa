@@ -38,6 +38,8 @@ runs:
 
     - name: Build page
       shell: bash -el {0}
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
       run: |
         cd ${{ inputs.path }}/locosopa && snakemake -c1 --software-deployment-method conda --config page_config=${{ github.workspace }}/${{ inputs.config }}
 
