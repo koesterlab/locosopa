@@ -11,6 +11,9 @@ inputs:
   deploy:
     description: Boolean whether locosopa shall be deployed to github pages
     default: "true"
+  token:
+    description: Provide GITHUB_TOKEN for API access, the default actions token (secrets.GITHUB_TOKEN) is sufficient
+    required: true
 outputs:
   page-url:
     description: page url
