@@ -20,36 +20,25 @@ except ImportError:
 
 def main():
     # Access Snakemake objects
+    name = snakemake.params.name
+    hashtags = snakemake.params.hashtags
+    accounts = snakemake.params.accounts
     output_config = snakemake.output.config
     fedi_wall_version = snakemake.params.version
     fedi_wall_sha256 = snakemake.params.expected_sha256
-    config_source_path = Path(snakemake.params.config_source)
+    fediwall_dir = snakemake.output
 
-    if not config_source_path.exists():
-        raise FileNotFoundError(f"Fediwall config file not found: {config_source_path}")
+    # Normalize hashtags: ensure list of lowercase strings without leading '#'
+    if not isinstance(hashtags, list):
+        raise TypeError("'hashtags' must be a list")
+    if not isinstance(accounts, list):
+        raise TypeError("'accounts' must be a list")
 
-    # Load user-provided wall config (JSON or YAML). Must contain title, subtitle, hashtags.
-    wall_config_user: Dict[str, Any]
-    if config_source_path.suffix.lower() in {".yaml", ".yml"}:
-        if yaml is None:
-            raise RuntimeError(
-                "PyYAML not installed but a YAML config was provided. Install pyyaml or use JSON."
-            )
-        wall_config_user = yaml.safe_load(config_source_path.read_text()) or {}
-    else:
-        wall_config_user = json.loads(config_source_path.read_text())
-
-    # Basic validation / defaults
-    required_top_level = ["title", "subtitle", "hashtags"]
-    missing = [k for k in required_top_level if k not in wall_config_user]
-    if missing:
-        raise ValueError(
-            f"Missing required keys in fediwall config: {missing}. Required: {required_top_level}"
-        )
-
-    # Provide defaults for optional keys if absent
-    defaults: Dict[str, Any] = {
-        "accounts": [],
+    # Configuration
+    config: Dict[str, Any] = {
+        "title": f"Fediwall for {name}",
+        "accounts": accounts,
+        "hashtags": [str(h).lstrip("#").lower() for h in hashtags],
         "servers": [
             "mastodon.social",
             "fosstodon.org",
@@ -60,18 +49,9 @@ def main():
         "theme": "auto",
         "autorefresh": 30,
         "showboosts": True,
-        "showreplies": False,
+        "showreplies": True,
         "showsensitive": False,
     }
-    # Merge defaults without overwriting user-provided values
-    for k, v in defaults.items():
-        wall_config_user.setdefault(k, v)
-
-    # Normalize hashtags: ensure list of lowercase strings without leading '#'
-    hashtags = wall_config_user["hashtags"]
-    if not isinstance(hashtags, list):
-        raise TypeError("'hashtags' must be a list")
-    wall_config_user["hashtags"] = [str(h).lstrip("#").lower() for h in hashtags]
 
     # Download fediwall with checksum verification
     download_url = f"https://github.com/defnull/fediwall/releases/download/{fedi_wall_version}/fediwall-1.4.0.tgz"
@@ -104,7 +84,6 @@ def main():
                 source_dir = Path(temp_dir)
 
             # Create fediwall directory in build
-            fediwall_dir = Path("build/fediwall")
             fediwall_dir.mkdir(parents=True, exist_ok=True)
 
             # Copy fediwall files
@@ -118,8 +97,8 @@ def main():
         os.unlink(tmp_file.name)
 
     # Write merged config file
-    with open(output_config, "w") as f:
-        json.dump(wall_config_user, f, indent=2)
+    with open(fediwall_dir / "wall-config.json", "w") as f:
+        json.dump(config, f, indent=2)
 
 
 if __name__ == "__main__":
