@@ -12,11 +12,6 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Dict
 
-try:
-    import yaml
-except ImportError:
-    yaml = None
-
 
 def main():
     # Access Snakemake objects
