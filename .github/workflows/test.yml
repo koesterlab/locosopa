@@ -18,3 +18,4 @@ jobs:
         with:
           config: .tests/config.yaml
           deploy: "false"
+          token: ${{ secrets.GITHUB_TOKEN }}

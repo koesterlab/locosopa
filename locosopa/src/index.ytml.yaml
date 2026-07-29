@@ -2,6 +2,7 @@ __use_yte__: true
 
 __definitions__:
   - import re, os
+  - from github.GithubException import UnknownObjectException
   - color = config["color"]
   - |
     def heroicon(name):
@@ -22,15 +23,34 @@ __definitions__:
   - |
     from github import Github, Auth
     token = os.getenv("GITHUB_TOKEN")
-    auth = Auth.Token(token) if token else None
-    github_client = Github(auth=auth)
-    users = [user for user in github_client.get_repo(config["repo"]["name"]).get_contributors() if user.login not in config["repo"]["contributors"]["skip"]]
+    assert token, "GITHUB_TOKEN must be provided"
+    auth = Auth.Token(token)
+    github_client = Github(
+        auth=auth,
+        per_page=100,
+        seconds_between_requests=1,
+    )
+    user_queries = [user for user in github_client.get_repo(config["repo"]["name"]).get_contributors() if user.login not in config["repo"]["contributors"]["skip"]]
     visited = set()
+    users = []
     companies = []
-    for user in users:
-      if user.company not in visited:
-        visited.add(user.company)
-        companies.append(user.company)
+    for user in user_queries:
+      try:
+        name = user.name
+        login = user.login
+      except UnknownObjectException:
+        continue
+      users.append({"name": name or login, "login": login})
+      try:
+        company = user.company
+      except UnknownObjectException as e:
+        print(f"No company/institute set for user {login}.")
+        continue
+      if company is not None:
+        company = company.strip()
+      if company not in visited and company not in config["repo"]["contributors"]["skip"]:
+          visited.add(company)
+          companies.append(company)
   - |
     hero_links = config["hero"]["links"]
     if "docs" in config:
@@ -90,7 +110,7 @@ html:
                       content:
                         ?for item in config["hero"]["statements"]:
                           - li:
-                              class: ?f"prose prose-a:text-white hover:prose-a:text-{color}-500 text-white prose-a:no-underline"
+                              class: ?f"prose prose-a:text-white hover:prose-a:text-{color}-500 text-white"
                               content:
                                 markdown: ?item
                   - div:
@@ -157,7 +177,7 @@ html:
                   - div:
                       class: ?divider_cls
                       content: null
-              
+
                 ?for _ in range(1):
                   - div:
                         class: md:flex md:flex-col md:space-x-4 gap-10 mb-10 text-gray-400
@@ -177,8 +197,8 @@ html:
                                         content:
                                           a:
                                             class: hover:decoration-{color}-500
-                                            href: ?f"https://github.com/{user.login}"
-                                            content: ?user.name or user.login
+                                            href: ?f"https://github.com/{user['login']}"
+                                            content: ?user["name"]
                           - h1:
                               class: text-lg font-bold text-center
                               content:
@@ -190,8 +210,6 @@ html:
                               class: flex flex-wrap justify-center gap-4
                               content:
                                 ?for company in companies:
-                                    - li: 
+                                    - li:
                                         class: max-w-96 truncate
                                         content: ?company
-
-

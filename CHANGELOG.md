@@ -1,5 +1,58 @@
 # Changelog
 
+## [1.2.0](https://github.com/koesterlab/locosopa/compare/v1.1.2...v1.2.0) (2026-06-15)
+
+
+### Features
+
+* skip companies if requested (using the same skiplist as contributors) ([243a49c](https://github.com/koesterlab/locosopa/commit/243a49caccca7b6bd85e86096b59242aa438b591))
+
+
+### Bug Fixes
+
+* only strip company string if not None ([6ec2e17](https://github.com/koesterlab/locosopa/commit/6ec2e17c5d08313a23060c065532173c83c07346))
+
+## [1.1.2](https://github.com/koesterlab/locosopa/compare/v1.1.1...v1.1.2) (2026-06-15)
+
+
+### Bug Fixes
+
+* handle permission issues when retrieving user name and login ([2106e27](https://github.com/koesterlab/locosopa/commit/2106e2767a94328b4ad17c708e1c9f1d668a91ec))
+
+## [1.1.1](https://github.com/koesterlab/locosopa/compare/v1.1.0...v1.1.1) (2026-06-15)
+
+
+### Bug Fixes
+
+* missing import ([d2ce6f0](https://github.com/koesterlab/locosopa/commit/d2ce6f0da8e82900fc854b97aeee43bdc1173fe3))
+
+## [1.1.0](https://github.com/koesterlab/locosopa/compare/v1.0.6...v1.1.0) (2026-06-15)
+
+
+### Features
+
+* throttle PyGithub contributor requests ([5ce2a71](https://github.com/koesterlab/locosopa/commit/5ce2a71bfc59ca7fcd9a4b26c4aa7c827b3beddb))
+
+
+### Bug Fixes
+
+* better error handling for company retrieval ([0cfb809](https://github.com/koesterlab/locosopa/commit/0cfb809a698a6faca3a076ff66b3adb53880e824))
+* handle missing company ([7dc2515](https://github.com/koesterlab/locosopa/commit/7dc2515e2a4b3676130a3e519dd79ce8047ef2e9))
+* Specify version constraint for sphinxawesome-theme ([8d27bbc](https://github.com/koesterlab/locosopa/commit/8d27bbc5f37cebfecbf8d1644fddff9151fb0ba3))
+* Specify version constraint for sphinxawesome-theme ([36f67c3](https://github.com/koesterlab/locosopa/commit/36f67c38b8de7ff8ad51e3e5debca033140649b1))
+
+
+### Performance Improvements
+
+* throttle PyGithub contributor fetches in homepage generation ([c624688](https://github.com/koesterlab/locosopa/commit/c624688cd5b1a145f58b6cccd3704dcf00ace1d4))
+
+## [1.0.6](https://github.com/koesterlab/locosopa/compare/v1.0.5...v1.0.6) (2025-11-22)
+
+
+### Bug Fixes
+
+* Add support for JavaScript assets in conf.py via javascript_assets ([ab0fecc](https://github.com/koesterlab/locosopa/commit/ab0feccc5f761786082cbf3fd94fad6d9b6a6e0b))
+
 ## [1.0.5](https://github.com/koesterlab/locosopa/compare/v1.0.4...v1.0.5) (2025-09-18)
 
 
