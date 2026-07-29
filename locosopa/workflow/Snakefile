@@ -6,7 +6,7 @@ page_config = yaml.load(open(config["page_config"]), Loader=yaml.SafeLoader)
 page_config_dir = Path(config["page_config"]).parent
 doc_config = page_config.get("docs", None)
 assets = page_config.get("assets", [])
-fediwall_enabled = lookup("fediwall/enabled", within=page_config, default=False)
+fediwall_enabled = lookup("fediwall", within=page_config, default=None) is not None
 
 
 rule all:

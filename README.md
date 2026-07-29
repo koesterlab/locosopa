@@ -101,9 +101,8 @@ features:
     code: |
       optional code illustrating the feature
 
-# specify whether to generate a fediwall
+# specify whether to generate a fediwall (remove this section if not wanted)
 fediwall:
-  enabled: true
   hashtags:
     # set hashtags to show (case insensitive)
     - datavzrd
