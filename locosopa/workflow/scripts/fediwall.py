@@ -23,10 +23,9 @@ def main():
     name = snakemake.params.name
     hashtags = snakemake.params.hashtags
     accounts = snakemake.params.accounts
-    output_config = snakemake.output.config
     fedi_wall_version = snakemake.params.version
     fedi_wall_sha256 = snakemake.params.expected_sha256
-    fediwall_dir = snakemake.output
+    fediwall_dir = Path(snakemake.output[0])
 
     # Normalize hashtags: ensure list of lowercase strings without leading '#'
     if not isinstance(hashtags, list):
