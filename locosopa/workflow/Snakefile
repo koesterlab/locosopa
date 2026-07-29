@@ -6,14 +6,19 @@ page_config = yaml.load(open(config["page_config"]), Loader=yaml.SafeLoader)
 page_config_dir = Path(config["page_config"]).parent
 doc_config = page_config.get("docs", None)
 assets = page_config.get("assets", [])
+fediwall_enabled = lookup("fediwall", within=page_config, default=None) is not None
 
 
 rule all:
     input:
         # TODO add print_landscape once fixed
-        expand(["build/{page}.html", "build/{page}.css"], page=["index", "print_landscape"]),
+        expand(
+            ["build/{page}.html", "build/{page}.css"],
+            page=["index", "print_landscape"],
+        ),
         expand("build/{asset}", asset=assets),
         "build/docs" if doc_config else [],
+        "build/fediwall" if fediwall_enabled else [],
 
 
 rule build_css:
@@ -75,3 +80,20 @@ rule copy_asset:
     shell:
         "mkdir -p $(dirname {output}); "
         "cp {input} {output}"
+
+
+if fediwall_enabled:
+
+    rule build_fediwall:
+        output:
+            directory("build/fediwall"),
+        params:
+            version="v1.4.0",
+            expected_sha256="9aeca19df37e1c872efa0e8047660eb15cfe24f8b14e5c198a20d966e7e456bc",
+            hashtags=lookup("fediwall/hashtags", within=page_config, default=[]),
+            accounts=lookup("fediwall/accounts", within=page_config, default=[]),
+            name=page_config["project"]["name"],
+        conda:
+            "envs/fediwall.yaml"
+        script:
+            "scripts/fediwall.py"

@@ -137,3 +137,7 @@ features:
       The reports can moreover contain embedded results (from images, to PDFs and even [interactive HTML](https://github.com/datavzrd/datavzrd)) enabling a comprehensive reporting that combines analysis results with data provenance information.
     img: report.png
     url: https://snakemake.github.io/resources/report.html
+
+fediwall:
+  hashtags:
+    - snakemake
