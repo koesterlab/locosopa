@@ -90,7 +90,7 @@ if fediwall_enabled:
             version="v1.4.0",
             expected_sha256="9aeca19df37e1c872efa0e8047660eb15cfe24f8b14e5c198a20d966e7e456bc",
             hashtags=lookup("fediwall/hashtags", within=page_config, default=[]),
-            hashtags=lookup("fediwall/accounts", within=page_config, default=[]),
+            acounts=lookup("fediwall/accounts", within=page_config, default=[]),
             name=page_config["project"]["name"],
         conda:
             "envs/fediwall.yaml"
