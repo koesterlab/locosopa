@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/koesterlab/locosopa/compare/v1.2.0...v1.3.0) (2026-07-29)
+
+
+### Features
+
+* added fediwall support; added basic documentation in the readme ([#13](https://github.com/koesterlab/locosopa/issues/13)) ([9c71b18](https://github.com/koesterlab/locosopa/commit/9c71b18f06316f7274151c219ddb38ed173d1c7e))
+
 ## [1.2.0](https://github.com/koesterlab/locosopa/compare/v1.1.2...v1.2.0) (2026-06-15)
 
 
