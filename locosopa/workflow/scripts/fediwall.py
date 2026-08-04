@@ -41,10 +41,10 @@ def main():
             "genomic.social",
         ],
         "theme": "auto",
-        "autorefresh": 30,
-        "showboosts": True,
-        "showreplies": True,
-        "showsensitive": False,
+        "interval": 30,
+        "hideBoosts": False,
+        "hideReplies": False,
+        "hideSensitive": False,
     }
 
     # Download fediwall with checksum verification
