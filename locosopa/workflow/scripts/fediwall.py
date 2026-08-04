@@ -32,7 +32,7 @@ def main():
     config: Dict[str, Any] = {
         "title": f"Fediwall for {name}",
         "accounts": accounts,
-        "hashtags": [str(h).lstrip("#").lower() for h in hashtags],
+        "tags": [str(h).lstrip("#").lower() for h in hashtags],
         "servers": [
             "mastodon.social",
             "fosstodon.org",
