@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/koesterlab/locosopa/compare/v1.3.0...v1.3.1) (2026-08-04)
+
+
+### Miscellaneous Chores
+
+* release 1.3.1 ([5495aa3](https://github.com/koesterlab/locosopa/commit/5495aa3f3b927867d3a7c5817ad2c46b9fa6a4f0))
+
 ## [1.3.0](https://github.com/koesterlab/locosopa/compare/v1.2.0...v1.3.0) (2026-07-29)
 
 
