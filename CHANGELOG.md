@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/koesterlab/locosopa/compare/v1.3.1...v1.4.0) (2026-08-26)
+
+
+### Features
+
+* configured a higher default limit of posts to display ([#24](https://github.com/koesterlab/locosopa/issues/24)) ([45cd3da](https://github.com/koesterlab/locosopa/commit/45cd3daf57b023e6b3338b287b401d24283fdaf8))
+
+
+### Bug Fixes
+
+* added bot config ([#23](https://github.com/koesterlab/locosopa/issues/23)) ([d837b22](https://github.com/koesterlab/locosopa/commit/d837b22e790e9bfa84b6a12e80a960fb6c29cf46))
+
 ## [1.3.1](https://github.com/koesterlab/locosopa/compare/v1.3.0...v1.3.1) (2026-08-04)
 
 
