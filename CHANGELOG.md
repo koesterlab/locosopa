@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/koesterlab/locosopa/compare/v1.4.0...v1.5.0) (2026-10-18)
+
+
+### Features
+
+* Add sphinx-design to docs build ([#27](https://github.com/koesterlab/locosopa/issues/27)) ([96f9a6d](https://github.com/koesterlab/locosopa/commit/96f9a6d686a8ef33a202395d18123a52e043e727))
+
 ## [1.4.0](https://github.com/koesterlab/locosopa/compare/v1.3.1...v1.4.0) (2026-08-26)
 
 
