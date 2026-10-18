@@ -8,6 +8,7 @@ dependencies:
   - sphinx-argparse
   - sphinxcontrib-napoleon
   - myst-parser
+  - sphinx-design
   - pip
   - pip:
       - sphinxawesome-theme!=6.0.3  # 6.0.3 wheel is broken
