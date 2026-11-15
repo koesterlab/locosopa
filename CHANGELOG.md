@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/koesterlab/locosopa/compare/v1.5.0...v1.6.0) (2026-11-15)
+
+
+### Features
+
+* fediwall servers ([#26](https://github.com/koesterlab/locosopa/issues/26)) ([5ad9ea0](https://github.com/koesterlab/locosopa/commit/5ad9ea079ff43df9c4293c3cc694a4c66fce04b4))
+
 ## [1.5.0](https://github.com/koesterlab/locosopa/compare/v1.4.0...v1.5.0) (2026-10-18)
 
 
